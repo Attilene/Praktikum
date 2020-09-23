@@ -91,6 +91,50 @@ def sinus():
     actm(act)
 
 
+def sinus2():
+    def act():
+        global pos
+
+        def processor(rad):
+            return sin(rad * 10) * 30 + 120
+        x, y = from_polar(pos, processor)
+        move(ball, x, y, True)
+        pos += step
+
+    actm(act)
+
+
+def apple():
+    ball_to_centre()
+    pos = 90
+
+    def act():
+        nonlocal pos
+
+        def processor(rad):
+            return (1 - sin(rad)) * (200 / 2)
+        x, y = from_polar(pos, processor)
+        move(ball, x, y, True)
+        pos += step
+
+    actm(act)
+
+
+def clover():
+    ball_to_centre()
+
+    def act():
+        global pos
+
+        def processor(rad):
+            return 4 * sin(2 * rad) * 200 / 4
+        x, y = from_polar(pos, processor)
+        move(ball, x, y, True)
+        pos += step
+
+    actm(act)
+
+
 def actm(anime):
     def actm_move():
         anime()
@@ -100,20 +144,23 @@ def actm(anime):
 
 cen = [300, 300]
 pos = 0
-accur = 7
-speed = 8
+accur = 9
+speed = 9
 clock = True
 step = (-1 if clock else 1) * (4 - (accur / 2.5))
 interval = round(abs(-step) * 10 / speed * 5)
 root = Tk()
 c = Canvas(root, width=600, height=600, bg="yellow")
 c.pack()
-# okr = c.create_oval(100, 100, 500, 500, fill="red", outline="red")
-ball = c.create_oval(490, 290, 510, 310, fill="blue", outline="blue")
+# okr = c.create_oval(100, 100, 500, 500, fill="red", outline="black")
+ball = c.create_oval(490, 290, 510, 310, fill="green", outline="blue")
 
 # ball_move()  # Движение шарика по окружности
 # spiral()  # Спиральное движение шарика
 # flower()  # Рисование цветка
-sinus()
+# sinus()  # Движение по окружности с колебаниями 1
+# sinus2()  # Движение по окружности с колебаниями 2
+# apple()  # Рисование яблока
+clover()  # Четырехлистный клевер
 
 root.mainloop()
