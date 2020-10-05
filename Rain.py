@@ -1,5 +1,4 @@
 from tkinter import *
-from math import *
 from random import *
 
 
@@ -29,8 +28,9 @@ def create_drop():
         x = randint(2, size_can[0])
         y = -10
         x_buf = randint(2, 4)
-        colors = choice(("blue", "white", "skyblue"))
-        # colors = "blue"
+        # colors = choice(("blue", "white", "skyblue"))
+        # colors = choice(("yellow", "red", "blue", "green", "orange", "purple", "skyblue"))
+        colors = "blue"
         # colors = choice(["pink", "purple", "violet"])
         drops.append([c.create_oval(x, y, x + x_buf, x_buf * 3 + y + 15, fill=colors, outline=colors), x_buf])
 
@@ -45,13 +45,11 @@ def actm(anime):
 
 drops = []
 size_can = [1000, 600]
-pl = 10
-accur = 5
+pl = 3
 speedfront = 20
-speedback1 = speedfront - 4
-speedback2 = speedfront - 8
-step = accur / 3 - 4
-interval = round(abs(step) * 10 / speedfront * 5)
+speedback1 = speedfront - 5
+speedback2 = speedfront - 10
+interval = 5
 root = Tk()
 c = Canvas(root, width=size_can[0], height=size_can[1], bg="black")
 c.pack()
