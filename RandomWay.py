@@ -31,7 +31,7 @@ def way(obj):
         else:
             c.move(obj, randint(-1, 1) * step, randint(-1, 1) * step)
         create_line(x0, y0, obj)
-        assert (x0 < size_can[0] - 100) or finish
+        # assert (x0 < size_can[0] - 100) or finish
 
     actm(act)
 
@@ -53,16 +53,17 @@ finish = False
 size_can = [800, 800]
 step = 3
 interval = 10
-direction = "right"
+direction = "none"
 root = Tk()
 c = Canvas(root, width=size_can[0], height=size_can[1], bg="black")
-c.create_line(size_can[0] - 100, 0, size_can[0] - 100, 800, fill="white")
+# c.create_line(size_can[0] - 100, 0, size_can[0] - 100, 800, fill="white")
 point1 = c.create_oval(0, 0, 0, 0, fill="black", outline="black")
-point2 = c.create_oval(0, 0, 0, 0, fill="black", outline="black")
-c.move(point1, 0, size_can[1] / 4)
-c.move(point2, 0, size_can[1] * 3 / 4)
+# point2 = c.create_oval(0, 0, 0, 0, fill="black", outline="black")
+c.move(point1, size_can[0] / 2, size_can[1] / 2)
+# c.move(point1, 0, size_can[1] / 4)
+# c.move(point2, 0, size_can[1] * 3 / 4)
 c.pack()
 way(point1)
-way(point2)
+# way(point2)
 
 root.mainloop()
