@@ -25,10 +25,19 @@ def rain():
 
 def create_drop():
     for i in range(pl):
-        x = randint(2, size_can[0])
+        x = randint(1, size_can[0])
         y = -10
         x_buf = randint(2, 4)
+        # dict_colors = {"red": [k for k in range(1, 143)], "orange": [k for k in range(143, 286)],
+        #           "yellow": [k for k in range(286, 428)], "green": [k for k in range(428, 570)],
+        #           "skyblue": [k for k in range(570, 712)], "blue": [k for k in range(712, 854)],
+        #           "purple": [k for k in range(854, 1001)]}
+        # for j in dict_colors:
+        #     if x in dict_colors.get(j):
+        #         colors = j
         # colors = choice(("blue", "white", "skyblue"))
+        # colors = "#" + str("%06x" % (16777 * x))
+        # colors = "#" + str("%06x" % randint(0, 0xFFFFFF))
         # colors = choice(("yellow", "red", "blue", "green", "orange", "purple", "skyblue"))
         colors = "blue"
         # colors = choice(["pink", "purple", "violet"])
