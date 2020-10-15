@@ -1,6 +1,6 @@
 from tkinter import *
 from random import *
-from math import sqrt
+import math
 
 
 def powerOfResistance():
@@ -27,8 +27,8 @@ def powerOfResistance():
             elif c.coords(balls[i][0])[3] >= size_can[1]:
                 c.move(balls[i][0], 0, -1 * (c.coords(balls[i][0])[3] - size_can[1]))
                 balls[i][3] = True
-            elif c.coords(balls[i][0])[3] >= size_can[1] / 2 + 0.1 * balls[i][1] * (balls[i][1] // 10): # Проверка на погружение + учет инерции тела
-                c.move(balls[i][0], 0, 0.25 * sqrt(balls[i][1] / 100 * (density - 1000))) # Скорость передвижения шарика с учетом его размера
+            elif c.coords(balls[i][0])[3] >= size_can[1] / 2 + (density_ball * (4/3 * math.pi * math.pow(balls[i][1] / 200, 3))) / 2: # Проверка на погружение + учет инерции тела
+                c.move(balls[i][0], 0, 0.25 * math.sqrt(balls[i][1] / 100 * (density_ball - density_liquid))) # Скорость передвижения шарика с учетом его размера
             elif not balls[i][3]:
                 c.move(balls[i][0], 0, speed + 5)
 
@@ -60,9 +60,10 @@ def actm(anime):
 
 balls = []
 size_can = [700, 650]
-density = 1300
-amount = 10
-speed = density // 500
+density_ball = 1200
+density_liquid = 1000
+amount = 8
+speed = (density_ball-density_liquid) // 50
 interval = 10
 root = Tk()
 c = Canvas(root, width=size_can[0], height=size_can[1], bg="white")
