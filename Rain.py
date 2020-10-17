@@ -41,7 +41,7 @@ def create_drop():
         # colors = choice(("yellow", "red", "blue", "green", "orange", "purple", "skyblue"))
         # colors = "blue"
         # colors = choice(["pink", "purple", "violet"])
-        drops.append([c.create_rectangle(x, y, x + x_buf, x_buf * 3 + y + 15, fill=colors, outline=colors), x_buf])
+        drops.append([c.create_oval(x, y, x + x_buf, x_buf * 3 + y + 15, fill=colors, outline=colors), x_buf])
 
 
 def actm(anime):

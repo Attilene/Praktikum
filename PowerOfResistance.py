@@ -27,8 +27,8 @@ def powerOfResistance():
             elif c.coords(balls[i][0])[3] >= size_can[1]:
                 c.move(balls[i][0], 0, -1 * (c.coords(balls[i][0])[3] - size_can[1]))
                 balls[i][3] = True
-            elif c.coords(balls[i][0])[3] >= size_can[1] / 2 + balls[i][7]: # Проверка на погружение + учет инерции тела
-                c.move(balls[i][0], 0, balls[i][8]) # Скорость передвижения шарика с учетом его размера
+            elif c.coords(balls[i][0])[3] >= size_can[1] / 2 + balls[i][7]:  # Проверка на погружение + учет инерции тела
+                c.move(balls[i][0], 0, balls[i][8])  # Скорость передвижения шарика с учетом его размера
             elif not balls[i][3]:
                 c.move(balls[i][0], 0, speed + 5)
 
@@ -48,8 +48,8 @@ def create_Balls():
         # colors = choice(["pink", "purple", "violet"])
         balls.append([c.create_oval(x, y, x + x_buf, y + x_buf, outline=colors, width=3), x_buf,
                       [i for i in range(1, x_buf // 10, 2)], False, -1, 1, 1,
-                      (density_ball * (4/3 * math.pi * math.pow(x_buf / 200, 3))) / 2,
-                      0.25 * math.sqrt(x_buf / 100 * (density_ball - density_liquid))])
+                      (speed * density_ball * (4/3 * math.pi * math.pow(x_buf / 200, 3))) / (speed * 2),
+                      0.2 * math.sqrt(x_buf / 100 * (density_ball - density_liquid))])
 
 
 def actm(anime):
@@ -62,10 +62,10 @@ def actm(anime):
 
 balls = []
 size_can = [700, 650]
-density_ball = 1300
+density_ball = 1500
 density_liquid = 1000
-amount = 8
-speed = (density_ball-density_liquid) // 50
+amount = 10
+speed = 1
 interval = 10
 root = Tk()
 c = Canvas(root, width=size_can[0], height=size_can[1], bg="white")
